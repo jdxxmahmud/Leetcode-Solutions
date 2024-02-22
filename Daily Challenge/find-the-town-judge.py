@@ -1,4 +1,5 @@
 # Problem Link: https://leetcode.com/problems/find-the-town-judge
+# Daily Problem Feb 22, 2024
 
 class Solution:
     def findJudge(self, n: int, trust: List[List[int]]) -> int:
