@@ -1,19 +1,25 @@
 # Problem Link: https://leetcode.com/problems/maximum-nesting-depth-of-the-parentheses
 
 class Solution:
-    def maxDepth(self, s: str) -> int:
-        depth = 0
-        q = []
-        curr = 0
-        for char in s:
-            if char == '(':
-                q.append(char)
-                curr += 1
-                depth = max(curr, depth)
-            elif char == ")":
-                q.pop()
-                curr -= 1
+    def removeOuterParentheses(self, s: str) -> str:
+        outParen = False
+        Inner = 0
+        res = ""
 
-            # print(char, q, curr, depth)
+        for brac in s:
+            if outParen == False:
+                if brac == "(":
+                    outParen = True
+            else:
+                if brac == "(":
+                    Inner += 1
+                    res += brac
+                else:
+                    if Inner > 0:
+                        Inner -= 1
+                        res += brac
+                    else:
+                        outParen = False
+            # print(f"brac: {brac}, outParen: {outParen}, Inner: {Inner}, res: {res}")
 
-        return depth
+        return res
